@@ -1,39 +1,50 @@
 #include <not_implemented.h>
 
+#include <utility>
+
 #include "../include/client_logger.h"
 
+client_logger::client_logger(std::string log_format, std::map<std::shared_ptr<std::ostream>, severity> streams)
+    : log_format_(std::move(log_format)), streams_(std::move(streams))
+{
+
+}
+
 client_logger::client_logger(
     client_logger const &other)
 {
-    throw not_implemented("client_logger::client_logger(client_logger const &other)", "your code should be here...");
 }
 
 client_logger &client_logger::operator=(
     client_logger const &other)
 {
-    throw not_implemented("client_logger &client_logger::operator=(client_logger const &other)", "your code should be here...");
 }
 
 client_logger::client_logger(
     client_logger &&other) noexcept
 {
-    throw not_implemented("client_logger::client_logger(client_logger &&other) noexcept", "your code should be here...");
 }
 
 client_logger &client_logger::operator=(
     client_logger &&other) noexcept
 {
-    throw not_implemented("client_logger &client_logger::operator=(client_logger &&other) noexcept", "your code should be here...");
 }
 
 client_logger::~client_logger() noexcept
 {
-    throw not_implemented("client_logger::~client_logger() noexcept", "your code should be here...");
 }
 
 logger const *client_logger::log(
-    const std::string &text,
+    const std::string &message,
     logger::severity severity) const noexcept
 {
-    throw not_implemented("logger const *client_logger::log(const std::string &text, logger::severity severity) const noexcept", "your code should be here...");
+    for (const auto & pair : streams_)
+    {
+        if (severity >= pair.second)
+        {
+            (*pair.first) << message << std::endl;
+        }
+    }
+
+    return this;
 }

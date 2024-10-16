@@ -2,10 +2,20 @@
 #define MATH_PRACTICE_AND_OPERATING_SYSTEMS_CLIENT_LOGGER_BUILDER_H
 
 #include <logger_builder.h>
+#include <client_logger.h>
+#include <map>
+#include <sstream>
+#include <fstream>
+#include <memory>
 
 class client_logger_builder final:
     public logger_builder
 {
+
+private:
+
+    std::string log_format_;
+    std::map<std::shared_ptr<std::ostream>, logger::severity> streams_;
 
 public:
 
