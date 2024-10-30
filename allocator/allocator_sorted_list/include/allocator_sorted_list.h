@@ -72,7 +72,10 @@ private:
 private:
     
     inline std::string get_typename() const noexcept override;
-    
+
+private:
+
+    size_t &obtain_trusted_memory_size() const;
 };
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_ALLOCATOR_ALLOCATOR_SORTED_LIST_H
