@@ -44,10 +44,6 @@ public:
     void deallocate(
         void *at) override;
 
-public:
-
-
-
 private:
     
     inline logger *get_logger() const override;
@@ -55,8 +51,6 @@ private:
 private:
     
     inline std::string get_typename() const noexcept override;
-
-public:
 
 };
 
